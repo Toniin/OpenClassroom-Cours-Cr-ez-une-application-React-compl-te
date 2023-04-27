@@ -1,14 +1,31 @@
 import * as React from "react";
-import { Link } from 'react-router-dom'
- 
+import styled from "styled-components";
+import DarkLogo from "../assets/dark-logo.png";
+import { StyledLink } from '../utils/style/Atoms'
+
+const HomeLogo = styled.img`
+  height: 70px;
+`;
+
+const NavContainer = styled.nav`
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export default function Header() {
-    return (
-        <nav>
-            <Link to="/">Accueil</Link>
-            <Link to="/survey">Questionnaire</Link>
-            <Link to="/results">Resultats</Link>
-            <Link to="/freelances">Freelances</Link>
-            <Link to="/test-error">Test erreur</Link>
-        </nav>
-    )
+  return (
+    <NavContainer>
+      <HomeLogo src={DarkLogo} alt="Logo shiny" />
+      <nav>
+        <StyledLink to="/">Accueil</StyledLink>
+        <StyledLink to="/survey" $isFullLink>
+          Questionnaire
+        </StyledLink>
+        <StyledLink to="/freelances">Profils</StyledLink>
+        <StyledLink to="/results">Résultats</StyledLink>
+      </nav>
+    </NavContainer>
+  );
 }
