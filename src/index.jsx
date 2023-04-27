@@ -1,27 +1,42 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Home from "./pages/Home";
 import Survey from "./pages/Survey";
-import Header from "./components/Header";
-import Error404 from "./components/Error";
+import ErrorPage from "./pages/ErrorPage";
 import Results from "./pages/Results"
 import Freelances from "./pages/Freelances";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/results",
+    element: <Results />
+  },
+  {
+    path: "/freelances",
+    element: <Freelances />,
+  },
+  {
+    path: "/survey",
+    element: <Survey />,
+    children: [
+      {
+        path: ":questionNumber",
+        element: <Survey />
+      },
+    ]
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/results" element={<Results />} />
-        <Route path="/freelances" element={<Freelances />} />
-        <Route path="/survey/" element={<Survey />} />
-        <Route path="/survey/:questionNumber" element={<Survey />} />
-        <Route path="*" element={<Error404 />} />
-      </Routes>
-    </Router>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
