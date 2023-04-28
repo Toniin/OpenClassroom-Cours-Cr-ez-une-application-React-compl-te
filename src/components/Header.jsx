@@ -1,4 +1,3 @@
-import * as React from "react";
 import styled from "styled-components";
 import DarkLogo from "../assets/dark-logo.png";
 import { StyledLink } from '../utils/style/Atoms'
@@ -20,7 +19,7 @@ export default function Header() {
       <HomeLogo src={DarkLogo} alt="Logo shiny" />
       <nav>
         <StyledLink to="/">Accueil</StyledLink>
-        <StyledLink to="/survey" $isFullLink>
+        <StyledLink to="/survey/1" $isFullLink>
           Questionnaire
         </StyledLink>
         <StyledLink to="/freelances">Profils</StyledLink>

@@ -6,13 +6,9 @@ import Survey from "./pages/Survey";
 import ErrorPage from "./pages/ErrorPage";
 import Results from "./pages/Results";
 import Freelances from "./pages/Freelances";
-import { createGlobalStyle } from "styled-components";
-
-const GlobalStyle = createGlobalStyle`
-    div {
-        font-family: 'Trebuchet MS', Helvetica, sans-serif;
-    }
-`;
+import { ThemeProvider, SurveyProvider } from "./utils/context";
+import Footer from "./components/Footer";
+// import GlobalStyle from "./utils/style/GlobalStyle"
 
 const router = createBrowserRouter([
   {
@@ -43,7 +39,12 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <SurveyProvider>
+        <RouterProvider router={router} />
+        <Footer />
+      </SurveyProvider>
+    </ThemeProvider>
+    {/* <GlobalStyle /> */}
   </React.StrictMode>
 );
