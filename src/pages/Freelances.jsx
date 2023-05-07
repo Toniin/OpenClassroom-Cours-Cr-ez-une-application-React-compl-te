@@ -57,7 +57,7 @@ export default function Freelances() {
       <CardsContainer>
         {isLoading ? (
           <LoaderWrapper>
-            <Loader theme={theme}/> 
+            <Loader theme={theme} data-testid="loader"/> 
           </LoaderWrapper>
         ) : (
           freelancersList.map((profile, index) => (
